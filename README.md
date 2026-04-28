@@ -1,59 +1,130 @@
-# AngularAuthBoilerplate
+# Angular Auth Boilerplate — Final Project (DEPAZ)
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 21.2.10.
+A full-stack Angular 21 + Node.js application featuring JWT authentication, refresh tokens, role-based access control (RBAC), and email verification.
 
-## Development server
+---
 
-To start a local development server, run:
+## 🔗 Live Links
 
-```bash
-ng serve
-```
+| Service | URL |
+|---|---|
+| **Frontend (Vercel)** | `https://YOUR-FRONTEND-URL.vercel.app` ← *Update after deployment* |
+| **Backend API (Render)** | `https://YOUR-BACKEND-URL.onrender.com` ← *Update after deployment* |
+| **Swagger API Docs** | `https://YOUR-BACKEND-URL.onrender.com/api-docs` |
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+---
 
-## Code scaffolding
+## 📁 Repositories
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+| Repo | URL |
+|---|---|
+| **Frontend** | `https://github.com/YOUR_USERNAME/LAB7DEPAZ` |
+| **Backend** | `https://github.com/YOUR_USERNAME/LAB7DEPAZ-backend` |
 
-```bash
-ng generate component component-name
-```
+---
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+## 🚀 Local Setup
 
-```bash
-ng generate --help
-```
+### Prerequisites
+- Node.js v18+
+- MySQL 8
+- Angular CLI (`npm install -g @angular/cli`)
 
-## Building
+---
 
-To build the project run:
-
-```bash
-ng build
-```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
+### Frontend
 
 ```bash
-ng test
+# 1. Clone the repository
+git clone https://github.com/YOUR_USERNAME/LAB7DEPAZ.git
+cd LAB7DEPAZ
+
+# 2. Install dependencies
+npm install
+
+# 3. Run in development mode (fake backend enabled by default)
+npm start
+# Visit http://localhost:4200
 ```
 
-## Running end-to-end tests
+**To run with the real backend**, update `src/environments/environment.development.ts`:
+```ts
+export const environment = {
+    production: false,
+    apiUrl: 'http://localhost:4000'
+};
+```
+Then disable the `fakeBackendProvider` line in `src/app/app.module.ts`.
 
-For end-to-end (e2e) testing, run:
+---
+
+### Backend
 
 ```bash
-ng e2e
+# 1. Clone the backend repo
+git clone https://github.com/YOUR_USERNAME/LAB7DEPAZ-backend.git
+cd LAB7DEPAZ-backend
+
+# 2. Install dependencies
+npm install
+
+# 3. Copy environment file and fill in your values
+cp .env.example .env
+
+# 4. Run database migrations
+npm run migrate
+
+# 5. Start the server
+npm run dev
+# API runs on http://localhost:4000
+# Swagger docs at http://localhost:4000/api-docs
 ```
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+---
 
-## Additional Resources
+## 🏗️ Architecture
 
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+```
+Frontend (Angular 21)          Backend (Node.js + Express)
+       │                                │
+       │──── HTTP + JWT Bearer ────────▶│
+       │                                │──── MySQL (PlanetScale/Railway)
+       │◀─── JSON + refreshToken ───────│
+       │       (httpOnly cookie)        │──── Nodemailer (Ethereal SMTP)
+```
+
+---
+
+## 🔐 Features
+
+- **Registration** with email verification token
+- **Login** with JWT (15 min) + refresh token (7 days, httpOnly cookie)
+- **Role-Based Access Control**: `Admin` (first user) and `User`
+- **Admin Panel**: Manage all accounts
+- **Forgot / Reset Password** via email link
+- **Swagger UI** at `/api-docs`
+- **Fake Backend** for offline testing (Stage A demo)
+
+---
+
+## 🧪 Evaluation Guide
+
+### Stage A — Fake Backend (Offline Demo)
+The fake backend is **enabled by default** in `src/app/app.module.ts`.
+Run `npm start` and demonstrate: Register → Verify Email (link shown in alert) → Login → Admin panel.
+
+### Stage B — Live Backend Integration
+1. Deploy the backend and get its public URL.
+2. Update `src/environments/environment.prod.ts` with the backend URL.
+3. Run `ng build --configuration production`.
+4. Deploy the `dist/` folder to Vercel.
+5. Demonstrate the full auth flow with a real MySQL database.
+
+---
+
+## 📜 Production Build
+
+```bash
+ng build --configuration production
+```
+Output is in `dist/angular-auth-boilerplate/browser/`. Deploy this folder to Vercel.
