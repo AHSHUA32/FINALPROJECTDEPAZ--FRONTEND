@@ -1,0 +1,54 @@
+<div class="accounts-container">
+    <div class="accounts-header">
+        <h2 class="accounts-title">USER <span class="neon">ACCOUNTS</span></h2>
+        <p class="accounts-subtitle">Manage all registered accounts in the system.</p>
+    </div>
+
+    <div *ngIf="loading" class="loading-state">
+        <div class="spinner-border" role="status"></div>
+        <span>Loading accounts...</span>
+    </div>
+
+    <div *ngIf="!loading" class="accounts-table-wrapper">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>NAME</th>
+                    <th>EMAIL</th>
+                    <th>ROLE</th>
+                    <th>STATUS</th>
+                    <th>ACTIONS</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let account of accounts">
+                    <td>{{ account.id }}</td>
+                    <td>{{ account.title }} {{ account.firstName }} {{ account.lastName }}</td>
+                    <td>{{ account.email }}</td>
+                    <td>
+                        <span class="role-badge" [class.admin]="account.role === 'Admin'">
+                            {{ account.role }}
+                        </span>
+                    </td>
+                    <td>
+                        <span class="status-badge" [class.verified]="account.isVerified">
+                            {{ account.isVerified ? '● VERIFIED' : '○ PENDING' }}
+                        </span>
+                    </td>
+                    <td>
+                        <button class="btn-delete"
+                            (click)="deleteAccount(account.id)"
+                            [disabled]="account.isDeleting">
+                            <span *ngIf="account.isDeleting" class="spinner-border spinner-border-sm"></span>
+                            <span *ngIf="!account.isDeleting">DELETE</span>
+                        </button>
+                    </td>
+                </tr>
+                <tr *ngIf="accounts.length === 0">
+                    <td colspan="6" class="no-accounts">No accounts found.</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

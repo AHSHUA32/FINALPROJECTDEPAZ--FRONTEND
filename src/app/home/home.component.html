@@ -1,0 +1,21 @@
+<div class="home-container">
+    <div class="home-hero">
+        <div class="hero-badge">SYSTEM ONLINE</div>
+        <h1 class="hero-title">WELCOME BACK,<br><span class="hero-name">{{ account?.firstName?.toUpperCase() }}</span></h1>
+        <p class="hero-subtitle">You are authenticated and connected to the system.</p>
+        <div class="hero-stats">
+            <div class="stat-item">
+                <span class="stat-label">STATUS</span>
+                <span class="stat-value online">● ONLINE</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-label">ROLE</span>
+                <span class="stat-value">{{ account?.role?.toUpperCase() }}</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-label">EMAIL</span>
+                <span class="stat-value">{{ account?.email }}</span>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,35 @@
+<div class="profile-container">
+    <div class="profile-hero">
+        <div class="profile-avatar">
+            {{ account?.firstName?.charAt(0) }}{{ account?.lastName?.charAt(0) }}
+        </div>
+        <div class="profile-info">
+            <div class="profile-badge">{{ account?.role?.toUpperCase() }}</div>
+            <h1 class="profile-name">{{ account?.title }} {{ account?.firstName }} {{ account?.lastName }}</h1>
+            <p class="profile-email">{{ account?.email }}</p>
+        </div>
+    </div>
+
+    <div class="profile-details-grid">
+        <div class="detail-card">
+            <span class="detail-label">FIRST NAME</span>
+            <span class="detail-value">{{ account?.firstName }}</span>
+        </div>
+        <div class="detail-card">
+            <span class="detail-label">LAST NAME</span>
+            <span class="detail-value">{{ account?.lastName }}</span>
+        </div>
+        <div class="detail-card">
+            <span class="detail-label">EMAIL</span>
+            <span class="detail-value">{{ account?.email }}</span>
+        </div>
+        <div class="detail-card">
+            <span class="detail-label">ROLE</span>
+            <span class="detail-value neon">{{ account?.role }}</span>
+        </div>
+    </div>
+
+    <div class="profile-actions">
+        <a routerLink="update" class="btn-edit">EDIT PROFILE</a>
+    </div>
+</div>

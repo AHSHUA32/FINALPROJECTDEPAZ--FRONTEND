@@ -1,0 +1,13 @@
+import { Component } from '@angular/core';
+
+import { AccountService } from '@app/_services';
+import { Account } from '@app/_models';
+
+@Component({ templateUrl: 'home.component.html', standalone: false })
+export class HomeComponent {
+    account?: Account | null;
+
+    constructor(private accountService: AccountService) {
+        this.accountService.account.subscribe(x => this.account = x);
+    }
+}

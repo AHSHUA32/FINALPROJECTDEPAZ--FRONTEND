@@ -1,1 +1,1149 @@
-/* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&family=Share+Tech+Mono&family=Exo+2:wght@300;400;600&display=swap');
+
+:root {
+    --bg-primary: #0a0a0f;
+    --bg-secondary: #0f0f1a;
+    --bg-card: #12121f;
+    --bg-input: #1a1a2e;
+    --neon-cyan: #00f5ff;
+    --neon-purple: #bf00ff;
+    --neon-pink: #ff006e;
+    --neon-green: #00ff88;
+    --text-primary: #e0e0ff;
+    --text-secondary: #8888aa;
+    --border-color: #2a2a4a;
+    --border-neon: #00f5ff44;
+    --danger: #ff006e;
+    --success: #00ff88;
+    --warning: #ffaa00;
+    --info: #00f5ff;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    font-family: 'Exo 2', sans-serif;
+    font-weight: 300;
+    min-height: 100vh;
+    background-image:
+        radial-gradient(ellipse at 20% 50%, #00f5ff08 0%, transparent 50%),
+        radial-gradient(ellipse at 80% 20%, #bf00ff08 0%, transparent 50%),
+        radial-gradient(ellipse at 50% 80%, #ff006e06 0%, transparent 50%);
+    background-attachment: fixed;
+}
+
+/* ── Scrollbar ── */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--bg-primary); }
+::-webkit-scrollbar-thumb { background: var(--neon-cyan); border-radius: 3px; }
+
+/* ── Navbar ── */
+.navbar {
+    background: rgba(10, 10, 15, 0.95) !important;
+    border-bottom: 1px solid var(--border-neon);
+    backdrop-filter: blur(20px);
+    padding: 0.8rem 2rem !important;
+    box-shadow: 0 0 30px rgba(0, 245, 255, 0.1);
+}
+
+.navbar-brand {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--neon-cyan) !important;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    text-shadow: 0 0 20px var(--neon-cyan);
+}
+
+.nav-item.nav-link {
+    color: var(--text-secondary) !important;
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 0.5rem 1rem !important;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.nav-item.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 2px;
+    background: var(--neon-cyan);
+    box-shadow: 0 0 10px var(--neon-cyan);
+    transition: width 0.3s ease;
+}
+
+.nav-item.nav-link:hover,
+.nav-item.nav-link.active {
+    color: var(--neon-cyan) !important;
+    text-shadow: 0 0 15px var(--neon-cyan);
+}
+
+.nav-item.nav-link:hover::after,
+.nav-item.nav-link.active::after {
+    width: 80%;
+}
+
+/* ── Cards ── */
+.card {
+    background: var(--bg-card) !important;
+    border: 1px solid var(--border-color) !important;
+    border-radius: 12px !important;
+    box-shadow:
+        0 0 40px rgba(0, 245, 255, 0.05),
+        inset 0 1px 0 rgba(255, 255, 255, 0.05) !important;
+    overflow: hidden;
+    position: relative;
+}
+
+.card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--neon-cyan), transparent);
+    opacity: 0.7;
+}
+
+.card-header {
+    background: rgba(0, 245, 255, 0.05) !important;
+    border-bottom: 1px solid var(--border-color) !important;
+    color: var(--neon-cyan) !important;
+    font-family: 'Rajdhani', sans-serif !important;
+    font-size: 1.4rem !important;
+    font-weight: 700 !important;
+    letter-spacing: 3px !important;
+    text-transform: uppercase !important;
+    text-shadow: 0 0 20px rgba(0, 245, 255, 0.5) !important;
+    padding: 1.2rem 1.5rem !important;
+}
+
+.card-body {
+    padding: 2rem !important;
+}
+
+/* ── Forms ── */
+.form-label {
+    color: var(--text-secondary);
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 0.4rem;
+}
+
+.form-control,
+.form-select {
+    background: var(--bg-input) !important;
+    border: 1px solid var(--border-color) !important;
+    border-radius: 6px !important;
+    color: var(--text-primary) !important;
+    font-family: 'Share Tech Mono', monospace !important;
+    font-size: 0.9rem !important;
+    padding: 0.7rem 1rem !important;
+    transition: all 0.3s ease !important;
+}
+
+.form-control:focus,
+.form-select:focus {
+    background: var(--bg-input) !important;
+    border-color: var(--neon-cyan) !important;
+    box-shadow: 0 0 0 3px rgba(0, 245, 255, 0.1), 0 0 20px rgba(0, 245, 255, 0.1) !important;
+    color: var(--text-primary) !important;
+    outline: none !important;
+}
+
+.form-control::placeholder {
+    color: var(--text-secondary) !important;
+    opacity: 0.5 !important;
+}
+
+.form-control.is-invalid,
+.form-select.is-invalid {
+    border-color: var(--neon-pink) !important;
+    box-shadow: 0 0 10px rgba(255, 0, 110, 0.2) !important;
+}
+
+.invalid-feedback {
+    color: var(--neon-pink) !important;
+    font-size: 0.75rem !important;
+    font-family: 'Share Tech Mono', monospace !important;
+    margin-top: 0.3rem !important;
+}
+
+.invalid-feedback::before {
+    content: '⚠ ';
+}
+
+.form-check-input {
+    background-color: var(--bg-input) !important;
+    border-color: var(--border-color) !important;
+}
+
+.form-check-input:checked {
+    background-color: var(--neon-cyan) !important;
+    border-color: var(--neon-cyan) !important;
+}
+
+.form-check-label {
+    color: var(--text-secondary);
+    font-size: 0.85rem;
+}
+
+/* ── Buttons ── */
+.btn-primary {
+    background: transparent !important;
+    border: 1px solid var(--neon-cyan) !important;
+    border-radius: 6px !important;
+    color: var(--neon-cyan) !important;
+    font-family: 'Rajdhani', sans-serif !important;
+    font-size: 0.9rem !important;
+    font-weight: 700 !important;
+    letter-spacing: 3px !important;
+    text-transform: uppercase !important;
+    padding: 0.7rem 2rem !important;
+    transition: all 0.3s ease !important;
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-primary::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(0, 245, 255, 0.1), transparent);
+    transition: left 0.5s ease;
+}
+
+.btn-primary:hover:not(:disabled)::before {
+    left: 100%;
+}
+
+.btn-primary:hover:not(:disabled) {
+    background: rgba(0, 245, 255, 0.1) !important;
+    box-shadow: 0 0 25px rgba(0, 245, 255, 0.4) !important;
+    color: var(--neon-cyan) !important;
+    transform: translateY(-1px);
+}
+
+.btn-primary:disabled {
+    opacity: 0.4 !important;
+    cursor: not-allowed !important;
+}
+
+.btn-danger {
+    background: transparent !important;
+    border: 1px solid var(--neon-pink) !important;
+    border-radius: 6px !important;
+    color: var(--neon-pink) !important;
+    font-family: 'Rajdhani', sans-serif !important;
+    font-weight: 700 !important;
+    letter-spacing: 2px !important;
+    text-transform: uppercase !important;
+    padding: 0.7rem 2rem !important;
+    transition: all 0.3s ease !important;
+}
+
+.btn-danger:hover:not(:disabled) {
+    background: rgba(255, 0, 110, 0.1) !important;
+    box-shadow: 0 0 25px rgba(255, 0, 110, 0.4) !important;
+}
+
+.btn-link {
+    color: var(--text-secondary) !important;
+    font-family: 'Rajdhani', sans-serif !important;
+    font-size: 0.85rem !important;
+    font-weight: 600 !important;
+    letter-spacing: 1px !important;
+    text-decoration: none !important;
+    transition: all 0.3s ease !important;
+}
+
+.btn-link:hover {
+    color: var(--neon-cyan) !important;
+    text-shadow: 0 0 10px rgba(0, 245, 255, 0.5) !important;
+}
+
+/* ── Alerts ── */
+.alert {
+    border-radius: 8px !important;
+    font-family: 'Share Tech Mono', monospace !important;
+    font-size: 0.85rem !important;
+    border: 1px solid !important;
+    position: relative !important;
+    overflow: hidden !important;
+}
+
+.alert::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 3px;
+}
+
+.alert-success {
+    background: rgba(0, 255, 136, 0.08) !important;
+    border-color: var(--neon-green) !important;
+    color: var(--neon-green) !important;
+}
+
+.alert-success::before { background: var(--neon-green); }
+
+.alert-danger {
+    background: rgba(255, 0, 110, 0.08) !important;
+    border-color: var(--neon-pink) !important;
+    color: var(--neon-pink) !important;
+}
+
+.alert-danger::before { background: var(--neon-pink); }
+
+.alert-info {
+    background: rgba(0, 245, 255, 0.08) !important;
+    border-color: var(--neon-cyan) !important;
+    color: var(--neon-cyan) !important;
+}
+
+.alert-info::before { background: var(--neon-cyan); }
+
+.alert-warning {
+    background: rgba(255, 170, 0, 0.08) !important;
+    border-color: var(--warning) !important;
+    color: var(--warning) !important;
+}
+
+.alert-warning::before { background: var(--warning); }
+
+.alert a {
+    color: inherit !important;
+    text-decoration: underline !important;
+}
+
+/* ── Spinner ── */
+.spinner-border {
+    border-color: var(--neon-cyan) !important;
+    border-right-color: transparent !important;
+}
+
+/* ── Tables ── */
+.table {
+    color: var(--text-primary) !important;
+}
+
+.table th {
+    background: rgba(0, 245, 255, 0.05) !important;
+    border-color: var(--border-color) !important;
+    color: var(--neon-cyan) !important;
+    font-family: 'Rajdhani', sans-serif !important;
+    font-size: 0.8rem !important;
+    font-weight: 700 !important;
+    letter-spacing: 2px !important;
+    text-transform: uppercase !important;
+}
+
+.table td {
+    border-color: var(--border-color) !important;
+    color: var(--text-primary) !important;
+    font-family: 'Share Tech Mono', monospace !important;
+    font-size: 0.85rem !important;
+    vertical-align: middle !important;
+}
+
+.table tbody tr {
+    transition: all 0.2s ease;
+}
+
+.table tbody tr:hover {
+    background: rgba(0, 245, 255, 0.03) !important;
+}
+
+/* ── Badges / Pills ── */
+.badge {
+    font-family: 'Rajdhani', sans-serif !important;
+    font-size: 0.7rem !important;
+    font-weight: 700 !important;
+    letter-spacing: 1px !important;
+    text-transform: uppercase !important;
+    padding: 0.3rem 0.6rem !important;
+    border-radius: 4px !important;
+}
+
+.bg-success {
+    background: rgba(0, 255, 136, 0.15) !important;
+    color: var(--neon-green) !important;
+    border: 1px solid var(--neon-green) !important;
+}
+
+.bg-danger {
+    background: rgba(255, 0, 110, 0.15) !important;
+    color: var(--neon-pink) !important;
+    border: 1px solid var(--neon-pink) !important;
+}
+
+/* ── App Container ── */
+.app-container {
+    min-height: 100vh;
+}
+
+.app-container.bg-light {
+    background: transparent !important;
+}
+
+/* ── Container padding ── */
+.container {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+}
+
+/* ── Home page ── */
+.p-4 h1 {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 3rem;
+    font-weight: 700;
+    color: var(--neon-cyan);
+    text-shadow: 0 0 30px rgba(0, 245, 255, 0.5);
+    letter-spacing: 3px;
+    animation: glitch 3s infinite;
+}
+
+.p-4 p {
+    color: var(--text-secondary);
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 1rem;
+    margin-top: 0.5rem;
+}
+
+@keyframes glitch {
+    0%, 90%, 100% { text-shadow: 0 0 30px rgba(0, 245, 255, 0.5); }
+    92% { text-shadow: -2px 0 var(--neon-pink), 2px 0 var(--neon-cyan); }
+    94% { text-shadow: 2px 0 var(--neon-purple), -2px 0 var(--neon-cyan); }
+    96% { text-shadow: 0 0 30px rgba(0, 245, 255, 0.5); }
+}
+
+/* ── Fade animation for alerts ── */
+.alert.fade {
+    opacity: 0 !important;
+    transition: opacity 0.25s ease !important;
+}
+
+/* ── Close button ── */
+.close {
+    color: var(--text-secondary) !important;
+    float: right;
+    cursor: pointer;
+    font-size: 1.2rem;
+    line-height: 1;
+    transition: color 0.2s;
+}
+
+.close:hover {
+    color: var(--neon-pink) !important;
+}
+
+/* ── Scan line effect on cards ── */
+@keyframes scanline {
+    0% { transform: translateY(-100%); }
+    100% { transform: translateY(100vh); }
+}
+
+/* ── Neon text utility ── */
+.neon-text {
+    color: var(--neon-cyan);
+    text-shadow: 0 0 20px var(--neon-cyan);
+}
+
+/* ── mt spacing ── */
+.mt-5 { margin-top: 3rem !important; }
+.m-3 { margin: 1rem !important; }
+
+/* ── Home Page ── */
+.home-container {
+    min-height: calc(100vh - 70px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+}
+
+.home-hero {
+    text-align: center;
+    max-width: 700px;
+}
+
+.hero-badge {
+    display: inline-block;
+    background: rgba(0, 255, 136, 0.1);
+    border: 1px solid var(--neon-green);
+    color: var(--neon-green);
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 4px;
+    padding: 0.4rem 1rem;
+    border-radius: 20px;
+    margin-bottom: 2rem;
+    animation: pulse-green 2s infinite;
+}
+
+@keyframes pulse-green {
+    0%, 100% { box-shadow: 0 0 10px rgba(0, 255, 136, 0.3); }
+    50% { box-shadow: 0 0 25px rgba(0, 255, 136, 0.6); }
+}
+
+.hero-title {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 4rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    letter-spacing: 4px;
+    line-height: 1.1;
+    margin-bottom: 1rem;
+}
+
+.hero-name {
+    color: var(--neon-cyan);
+    text-shadow: 0 0 30px rgba(0, 245, 255, 0.6);
+    display: block;
+    font-size: 5rem;
+}
+
+.hero-subtitle {
+    color: var(--text-secondary);
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+    margin-bottom: 3rem;
+}
+
+.hero-stats {
+    display: flex;
+    justify-content: center;
+    gap: 3rem;
+    flex-wrap: wrap;
+}
+
+.stat-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.4rem;
+}
+
+.stat-label {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 3px;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+}
+
+.stat-value {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.9rem;
+    color: var(--neon-cyan);
+    text-shadow: 0 0 10px rgba(0, 245, 255, 0.4);
+}
+
+.stat-value.online {
+    color: var(--neon-green);
+    text-shadow: 0 0 10px rgba(0, 255, 136, 0.4);
+    animation: pulse-green 2s infinite;
+}
+
+/* ══════════════════════════════════
+   ADMIN STYLES
+══════════════════════════════════ */
+.admin-subnav {
+    background: rgba(10, 10, 15, 0.9);
+    border-bottom: 1px solid var(--border-neon);
+    backdrop-filter: blur(10px);
+}
+
+.subnav-inner {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    padding: 0.6rem 2rem;
+}
+
+.subnav-label {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 3px;
+    color: var(--neon-purple);
+    text-shadow: 0 0 10px var(--neon-purple);
+}
+
+.subnav-links {
+    display: flex;
+    gap: 1.5rem;
+}
+
+.subnav-links a {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--text-secondary);
+    text-decoration: none;
+    transition: all 0.3s ease;
+    padding: 0.3rem 0;
+    border-bottom: 2px solid transparent;
+}
+
+.subnav-links a:hover,
+.subnav-links a.active {
+    color: var(--neon-cyan);
+    border-bottom-color: var(--neon-cyan);
+    text-shadow: 0 0 10px var(--neon-cyan);
+}
+
+.admin-overview {
+    max-width: 900px;
+    margin: 4rem auto;
+    padding: 0 2rem;
+}
+
+.overview-header {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.overview-badge {
+    display: inline-block;
+    background: rgba(191, 0, 255, 0.1);
+    border: 1px solid var(--neon-purple);
+    color: var(--neon-purple);
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 4px;
+    padding: 0.4rem 1rem;
+    border-radius: 20px;
+    margin-bottom: 1.5rem;
+    box-shadow: 0 0 15px rgba(191, 0, 255, 0.3);
+}
+
+.overview-title {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 3.5rem;
+    font-weight: 700;
+    letter-spacing: 4px;
+    color: var(--text-primary);
+    margin-bottom: 0.5rem;
+}
+
+.overview-title .neon,
+.neon {
+    color: var(--neon-cyan);
+    text-shadow: 0 0 20px rgba(0, 245, 255, 0.5);
+}
+
+.overview-subtitle {
+    color: var(--text-secondary);
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.85rem;
+}
+
+.overview-cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+}
+
+.overview-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 2rem;
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.overview-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--neon-cyan), transparent);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.overview-card:hover::before,
+.overview-card.clickable:hover::before {
+    opacity: 1;
+}
+
+.overview-card.clickable {
+    cursor: pointer;
+}
+
+.overview-card.clickable:hover {
+    border-color: var(--neon-cyan);
+    box-shadow: 0 0 20px rgba(0, 245, 255, 0.1);
+    transform: translateY(-2px);
+}
+
+.card-icon {
+    font-size: 2rem;
+}
+
+.card-info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+}
+
+.card-label {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 3px;
+    color: var(--text-secondary);
+}
+
+.card-value {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.9rem;
+    color: var(--neon-cyan);
+    text-shadow: 0 0 10px rgba(0, 245, 255, 0.3);
+}
+
+.card-value.online {
+    color: var(--neon-green);
+    text-shadow: 0 0 10px rgba(0, 255, 136, 0.3);
+}
+
+/* Accounts Table */
+.accounts-container {
+    max-width: 1100px;
+    margin: 3rem auto;
+    padding: 0 2rem;
+}
+
+.accounts-header {
+    margin-bottom: 2rem;
+}
+
+.accounts-title {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 2.5rem;
+    font-weight: 700;
+    letter-spacing: 3px;
+    color: var(--text-primary);
+}
+
+.accounts-subtitle {
+    color: var(--text-secondary);
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.8rem;
+    margin-top: 0.3rem;
+}
+
+.accounts-table-wrapper {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.loading-state {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 3rem;
+    color: var(--text-secondary);
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.85rem;
+}
+
+.role-badge {
+    display: inline-block;
+    background: rgba(0, 245, 255, 0.1);
+    border: 1px solid var(--neon-cyan);
+    color: var(--neon-cyan);
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    padding: 0.2rem 0.6rem;
+    border-radius: 4px;
+}
+
+.role-badge.admin {
+    background: rgba(191, 0, 255, 0.1);
+    border-color: var(--neon-purple);
+    color: var(--neon-purple);
+}
+
+.status-badge {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.75rem;
+    color: var(--text-secondary);
+}
+
+.status-badge.verified {
+    color: var(--neon-green);
+    text-shadow: 0 0 8px rgba(0, 255, 136, 0.4);
+}
+
+.btn-delete {
+    background: transparent;
+    border: 1px solid var(--neon-pink);
+    border-radius: 4px;
+    color: var(--neon-pink);
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    padding: 0.3rem 0.8rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-delete:hover:not(:disabled) {
+    background: rgba(255, 0, 110, 0.1);
+    box-shadow: 0 0 15px rgba(255, 0, 110, 0.3);
+}
+
+.btn-delete:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+}
+
+.no-accounts {
+    text-align: center;
+    color: var(--text-secondary);
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.85rem;
+    padding: 3rem !important;
+}
+
+/* ══════════════════════════════════
+   PROFILE STYLES
+══════════════════════════════════ */
+.profile-container {
+    max-width: 800px;
+    margin: 3rem auto;
+    padding: 0 2rem;
+}
+
+.profile-hero {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    margin-bottom: 3rem;
+    padding: 2rem;
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    position: relative;
+    overflow: hidden;
+}
+
+.profile-hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--neon-cyan), var(--neon-purple));
+}
+
+.profile-avatar {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background: rgba(0, 245, 255, 0.1);
+    border: 2px solid var(--neon-cyan);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--neon-cyan);
+    text-shadow: 0 0 20px var(--neon-cyan);
+    box-shadow: 0 0 20px rgba(0, 245, 255, 0.2);
+    flex-shrink: 0;
+}
+
+.profile-badge {
+    display: inline-block;
+    background: rgba(0, 245, 255, 0.1);
+    border: 1px solid var(--neon-cyan);
+    color: var(--neon-cyan);
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 3px;
+    padding: 0.2rem 0.8rem;
+    border-radius: 20px;
+    margin-bottom: 0.5rem;
+}
+
+.profile-name {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 2rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    color: var(--text-primary);
+    margin: 0.3rem 0;
+}
+
+.profile-email {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    margin: 0;
+}
+
+.profile-details-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.detail-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 1.2rem 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    transition: border-color 0.3s ease;
+}
+
+.detail-card:hover {
+    border-color: var(--border-neon);
+}
+
+.detail-label {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 3px;
+    color: var(--text-secondary);
+}
+
+.detail-value {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.95rem;
+    color: var(--text-primary);
+}
+
+.detail-value.neon {
+    color: var(--neon-cyan);
+    text-shadow: 0 0 10px rgba(0, 245, 255, 0.3);
+}
+
+.profile-actions {
+    margin-top: 1rem;
+}
+
+.btn-edit {
+    display: inline-block;
+    background: transparent;
+    border: 1px solid var(--neon-cyan);
+    border-radius: 6px;
+    color: var(--neon-cyan);
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 700;
+    letter-spacing: 3px;
+    padding: 0.7rem 2rem;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.btn-edit:hover {
+    background: rgba(0, 245, 255, 0.1);
+    box-shadow: 0 0 20px rgba(0, 245, 255, 0.3);
+    color: var(--neon-cyan);
+}
+
+/* Update Profile */
+.update-header {
+    margin-bottom: 2.5rem;
+}
+
+.update-title {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 2.5rem;
+    font-weight: 700;
+    letter-spacing: 3px;
+    color: var(--text-primary);
+}
+
+.update-subtitle {
+    color: var(--text-secondary);
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.8rem;
+    margin-top: 0.3rem;
+}
+
+.form-section {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 2rem;
+    margin-bottom: 1.5rem;
+}
+
+.section-label {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 3px;
+    color: var(--neon-cyan);
+    text-transform: uppercase;
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.8rem;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.section-hint {
+    color: var(--text-secondary);
+    font-size: 0.65rem;
+    letter-spacing: 1px;
+    text-transform: none;
+    font-family: 'Share Tech Mono', monospace;
+}
+
+.form-row-three {
+    display: grid;
+    grid-template-columns: 1fr 2fr 2fr;
+    gap: 1rem;
+}
+
+.form-row-two {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+}
+
+.form-actions {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-top: 1rem;
+}
+
+/* ── Email Sent Box ── */
+.email-sent-box {
+    text-align: center;
+    padding: 2rem;
+}
+
+.email-sent-icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    filter: drop-shadow(0 0 10px var(--neon-cyan));
+}
+
+.email-sent-title {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 1rem;
+    font-weight: 700;
+    letter-spacing: 3px;
+    color: var(--neon-cyan);
+    text-shadow: 0 0 10px rgba(0, 245, 255, 0.5);
+    margin-bottom: 0.5rem;
+}
+
+.email-sent-text {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+}
+
+/* ── Reset Link Box ── */
+.reset-link-box {
+    text-align: center;
+    padding: 1.5rem;
+}
+
+.reset-link-icon {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+.reset-link-title {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 1rem;
+    font-weight: 700;
+    letter-spacing: 3px;
+    color: var(--neon-cyan);
+    text-shadow: 0 0 10px rgba(0, 245, 255, 0.5);
+    margin-bottom: 0.5rem;
+}
+
+.reset-link-text {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+    margin-bottom: 1rem;
+}
+
+.reset-link-url {
+    display: block;
+    background: rgba(0, 245, 255, 0.05);
+    border: 1px solid var(--neon-cyan);
+    border-radius: 6px;
+    color: var(--neon-cyan) !important;
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.75rem;
+    padding: 0.8rem 1rem;
+    word-break: break-all;
+    text-decoration: none !important;
+    margin-bottom: 1rem;
+    transition: all 0.3s ease;
+}
+
+.reset-link-url:hover {
+    background: rgba(0, 245, 255, 0.1);
+    box-shadow: 0 0 15px rgba(0, 245, 255, 0.2);
+}
+
+.reset-link-note {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.7rem;
+    color: var(--text-secondary);
+    opacity: 0.6;
+    margin: 0;
+}
