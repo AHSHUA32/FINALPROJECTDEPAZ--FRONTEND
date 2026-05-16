@@ -1,130 +1,58 @@
-# Angular Auth Boilerplate — Final Project (DEPAZ)
+# FINALPROJECTDEPAZ — Frontend (Angular 21)
 
-A full-stack Angular 21 + Node.js application featuring JWT authentication, refresh tokens, role-based access control (RBAC), and email verification.
+## 🚀 Live Deployment
+- **Frontend (Vercel):** https://finalprojectdepaz-frontend.vercel.app
+- **Backend API (Render):** https://finalprojectdepaz-backend.onrender.com
+- **Swagger API Docs:** https://finalprojectdepaz-backend.onrender.com/api-docs
+- **Backend Repository:** https://github.com/AHSHUA32/FINALPROJECTDEPAZ--BACKEND
 
----
-
-## 🔗 Live Links
-
-| Service | URL |
-|---|---|
-| **Frontend (Vercel)** | `https://YOUR-FRONTEND-URL.vercel.app` ← *Update after deployment* |
-| **Backend API (Render)** | `https://YOUR-BACKEND-URL.onrender.com` ← *Update after deployment* |
-| **Swagger API Docs** | `https://YOUR-BACKEND-URL.onrender.com/api-docs` |
-
----
-
-## 📁 Repositories
-
-| Repo | URL |
-|---|---|
-| **Frontend** | `https://github.com/YOUR_USERNAME/LAB7DEPAZ` |
-| **Backend** | `https://github.com/YOUR_USERNAME/LAB7DEPAZ-backend` |
-
----
-
-## 🚀 Local Setup
-
-### Prerequisites
-- Node.js v18+
-- MySQL 8
-- Angular CLI (`npm install -g @angular/cli`)
-
----
-
-### Frontend
-
-```bash
-# 1. Clone the repository
-git clone https://github.com/YOUR_USERNAME/LAB7DEPAZ.git
-cd LAB7DEPAZ
-
-# 2. Install dependencies
-npm install
-
-# 3. Run in development mode (fake backend enabled by default)
-npm start
-# Visit http://localhost:4200
-```
-
-**To run with the real backend**, update `src/environments/environment.development.ts`:
-```ts
-export const environment = {
-    production: false,
-    apiUrl: 'http://localhost:4000'
-};
-```
-Then disable the `fakeBackendProvider` line in `src/app/app.module.ts`.
-
----
-
-### Backend
-
-```bash
-# 1. Clone the backend repo
-git clone https://github.com/YOUR_USERNAME/LAB7DEPAZ-backend.git
-cd LAB7DEPAZ-backend
-
-# 2. Install dependencies
-npm install
-
-# 3. Copy environment file and fill in your values
-cp .env.example .env
-
-# 4. Run database migrations
-npm run migrate
-
-# 5. Start the server
-npm run dev
-# API runs on http://localhost:4000
-# Swagger docs at http://localhost:4000/api-docs
-```
-
----
+## 📋 Project Overview
+Full-stack Angular 21 + Node.js/MySQL authentication system with:
+- JWT Access Tokens (15-min expiry, stored in memory)
+- HTTP-Only Refresh Token Cookies (7-day rotation)
+- Role-Based Access Control (Admin / User)
+- Email Verification via Nodemailer (Ethereal preview in logs)
+- Angular lazy-loaded modules: Account, Profile, Admin
 
 ## 🏗️ Architecture
-
 ```
-Frontend (Angular 21)          Backend (Node.js + Express)
-       │                                │
-       │──── HTTP + JWT Bearer ────────▶│
-       │                                │──── MySQL (PlanetScale/Railway)
-       │◀─── JSON + refreshToken ───────│
-       │       (httpOnly cookie)        │──── Nodemailer (Ethereal SMTP)
+Angular 21 (Frontend)          Node.js Express (Backend)
+├── AccountModule   ────────►  POST /accounts/authenticate
+├── ProfileModule   ────────►  GET  /accounts/:id
+├── AdminModule     ────────►  GET  /accounts (Admin only)
+└── FakeBackend    (Stage A)   MySQL (Railway) ← stores users/tokens
 ```
 
----
+## 🧪 Stage A — Fake Backend (Offline Testing)
+The `fakeBackendProvider` is enabled in `app.module.ts`. Run locally:
+```bash
+npm install
+npm start
+# Open http://localhost:4200
+```
+1. Register a new account → check browser alert for mock email link
+2. First registered account becomes **Admin**
+3. Login → Admin sees Admin panel, User does not
 
-## 🔐 Features
+## 🔗 Stage B — Live Integration Testing
+Production build connects to the live Render backend automatically.
+Visit: https://finalprojectdepaz-frontend.vercel.app
 
-- **Registration** with email verification token
-- **Login** with JWT (15 min) + refresh token (7 days, httpOnly cookie)
-- **Role-Based Access Control**: `Admin` (first user) and `User`
-- **Admin Panel**: Manage all accounts
-- **Forgot / Reset Password** via email link
-- **Swagger UI** at `/api-docs`
-- **Fake Backend** for offline testing (Stage A demo)
+## ⚙️ Local Setup
+```bash
+git clone https://github.com/AHSHUA32/FINALPROJECTDEPAZ--FRONTEND.git
+cd FINALPROJECTDEPAZ--FRONTEND
+npm install
+npm start
+```
 
----
-
-## 🧪 Evaluation Guide
-
-### Stage A — Fake Backend (Offline Demo)
-The fake backend is **enabled by default** in `src/app/app.module.ts`.
-Run `npm start` and demonstrate: Register → Verify Email (link shown in alert) → Login → Admin panel.
-
-### Stage B — Live Backend Integration
-1. Deploy the backend and get its public URL.
-2. Update `src/environments/environment.prod.ts` with the backend URL.
-3. Run `ng build --configuration production`.
-4. Deploy the `dist/` folder to Vercel.
-5. Demonstrate the full auth flow with a real MySQL database.
-
----
-
-## 📜 Production Build
-
+## 🏭 Production Build
 ```bash
 ng build --configuration production
+# Output: dist/angular-auth-boilerplate/browser/
 ```
-Output is in `dist/angular-auth-boilerplate/browser/`. Deploy this folder to Vercel.
+
+## 🔒 Security
+- JWT secret stored in backend `.env` (never committed)
+- Refresh token in `httpOnly` cookie (not accessible by JavaScript)
+- CORS restricted to Vercel frontend URL only
