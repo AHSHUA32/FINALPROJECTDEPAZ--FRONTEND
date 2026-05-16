@@ -8,8 +8,11 @@ import { AccountService, AlertService } from '@app/_services';
 @Component({ templateUrl: 'login.component.html', standalone: false })
 export class LoginComponent implements OnInit {
     form!: FormGroup;
+    loading = false;
     submitting = false;
     submitted = false;
+    showPw = false;
+    error = '';
 
     constructor(
         private formBuilder: FormBuilder,
