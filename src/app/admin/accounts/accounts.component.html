@@ -2,6 +2,7 @@
     <div class="accounts-header">
         <h2 class="accounts-title">USER <span class="neon">ACCOUNTS</span></h2>
         <p class="accounts-subtitle">Manage all registered accounts in the system.</p>
+        <a routerLink="add" class="btn btn-primary mt-3">+ CREATE ACCOUNT</a>
     </div>
 
     <div *ngIf="loading" class="loading-state">
@@ -36,7 +37,8 @@
                             {{ account.isVerified ? '● VERIFIED' : '○ PENDING' }}
                         </span>
                     </td>
-                    <td>
+                    <td class="action-buttons">
+                        <a routerLink="edit/{{account.id}}" class="btn-edit">EDIT</a>
                         <button class="btn-delete"
                             (click)="deleteAccount(account.id)"
                             [disabled]="account.isDeleting">

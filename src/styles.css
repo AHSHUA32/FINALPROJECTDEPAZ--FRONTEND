@@ -848,6 +848,40 @@ body {
     padding: 3rem !important;
 }
 
+.action-buttons {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+}
+
+.btn-edit {
+    background: transparent;
+    border: 1px solid var(--neon-cyan);
+    border-radius: 4px;
+    color: var(--neon-cyan);
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    padding: 0.3rem 0.8rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.btn-edit:hover {
+    background: rgba(0, 245, 255, 0.1);
+    box-shadow: 0 0 15px rgba(0, 245, 255, 0.3);
+    color: var(--neon-cyan);
+    text-decoration: none;
+}
+
+.text-muted {
+    color: var(--text-secondary) !important;
+    font-size: 0.7rem;
+}
+
 /* ══════════════════════════════════
    PROFILE STYLES
 ══════════════════════════════════ */
