@@ -1,5 +1,5 @@
-// Production environment — points to deployed Render backend
+// Production environment — points to deployed Vercel backend
 export const environment = {
     production: true,
-    apiUrl: 'https://finalprojectdepaz-backend.onrender.com'
+    apiUrl: 'https://finalprojectdepaz-backend.vercel.app'
 };
